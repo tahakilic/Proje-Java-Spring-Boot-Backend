@@ -1,6 +1,7 @@
 package com.Work.service;
 
 import com.Work.entity.WorkerEntity;
+import com.Work.model.dto.UserLogin;
 import com.Work.model.dto.WorkerDto;
 
 import java.util.List;
@@ -11,5 +12,8 @@ public interface IWorkerService {
     String deleteById(Long id);
     WorkerEntity getById(Long id);
     List<WorkerEntity> search(String search);
+
+    WorkerEntity userLogin(UserLogin userLogin);
+
 
 }

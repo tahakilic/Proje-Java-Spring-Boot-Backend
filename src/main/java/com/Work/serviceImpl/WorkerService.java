@@ -1,9 +1,8 @@
 package com.Work.serviceImpl;
 
-import com.Work.daoImpl.DetailDao;
 import com.Work.daoImpl.WorkerDao;
-import com.Work.entity.DetailEntity;
 import com.Work.entity.WorkerEntity;
+import com.Work.model.dto.UserLogin;
 import com.Work.model.dto.WorkerDto;
 import com.Work.service.IWorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,6 @@ public class WorkerService implements IWorkerService {
     @Autowired
     private WorkerDao workerDao;
 
-    @Autowired
-    private DetailDao detailDao;
 
     @Override
     public List<WorkerEntity> getAllList() {
@@ -39,11 +36,11 @@ public class WorkerService implements IWorkerService {
         workerEntity.setTelNumber(workerDto.getTelNumber());
         workerEntity.setPassword(workerDto.getPassword());
         workerEntity.setAge(workerDto.getAge());
-
-        if(workerDto.getDetail() != null){
-            DetailEntity detailEntity = detailDao.getById(workerDto.getDetail());
-            workerEntity.setDetail(detailEntity);
-        }
+        workerEntity.setWorkInLocations(workerDto.getWorkInLocations());
+        workerEntity.setAddress(workerDto.getAddress());
+        workerEntity.setDescription(workerDto.getDescription());
+        workerEntity.setPrice(workerDto.getPrice());
+        workerEntity.setAreaOfInterest(workerDto.getAreaOfInterest());
 
         return workerDao.createOrUpdate(workerEntity);
     }
@@ -63,4 +60,12 @@ public class WorkerService implements IWorkerService {
     public List<WorkerEntity> search(String search) {
         return workerDao.search(search);
     }
+
+    @Override
+    public WorkerEntity userLogin(UserLogin userLogin) {
+
+        WorkerEntity workerEntity=workerDao.userLogin(userLogin);
+        return workerEntity;
+    }
+
 }

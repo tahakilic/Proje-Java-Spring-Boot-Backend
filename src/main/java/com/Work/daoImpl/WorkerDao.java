@@ -2,6 +2,7 @@ package com.Work.daoImpl;
 
 import com.Work.dao.IWorkerDao;
 import com.Work.entity.WorkerEntity;
+import com.Work.model.dto.UserLogin;
 import com.Work.repository.IWorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,6 @@ public class WorkerDao implements IWorkerDao {
     @Override
     public List<WorkerEntity> getAllList() {
         List<WorkerEntity> list = (List<WorkerEntity>) repository.findAll();
-        repository
         return list;
     }
 
@@ -41,6 +41,12 @@ public class WorkerDao implements IWorkerDao {
 
     @Override
     public List<WorkerEntity> search(String search) {
-        return repository.findByFirstNameContainingOrLastNameContaining(search,search);
+        return repository.findByFirstNameContainingOrLastNameContainingOrWorkInLocationsContainingOrAreaOfInterestContaining(search,search,search,search);
+    }
+
+    @Override
+    public WorkerEntity userLogin(UserLogin userLogin) {
+
+        return repository.findByEmailAndPassword(userLogin.getEmail(),userLogin.getPassword());
     }
 }

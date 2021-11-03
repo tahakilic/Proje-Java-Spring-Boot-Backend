@@ -8,7 +8,11 @@ public class WorkerDto {
     private String password;
     private String telNumber;
     private int age;
-    private Long detail;
+    private String address;
+    private String description;
+    private String areaOfInterest;
+    private String workInLocations;
+    private int price;
 
 
     public Long getId() {
@@ -67,11 +71,43 @@ public class WorkerDto {
         this.age = age;
     }
 
-    public Long getDetail() {
-        return detail;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDetail(Long detailId) {
-        this.detail = detailId;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAreaOfInterest() {
+        return areaOfInterest;
+    }
+
+    public void setAreaOfInterest(String areaOfInterest) {
+        this.areaOfInterest = areaOfInterest;
+    }
+
+    public String getWorkInLocations() {
+        return workInLocations;
+    }
+
+    public void setWorkInLocations(String workInLocations) {
+        this.workInLocations = workInLocations;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

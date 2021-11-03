@@ -3,6 +3,8 @@ package com.Work.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity()
 @Table(name = "WORKER_TABLE")
@@ -31,10 +33,25 @@ public class WorkerEntity {
     @Column(name = "TEL_NUMBER")
     private String telNumber;
 
+    @Column(name="ADDRESS")
+    private String address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "detail_id", referencedColumnName = "id")
-    private DetailEntity detail;
+    @Column(name="DESCRIPTION")
+    private String description;
+
+    @Column(name="AREA_OF_INTEREST")
+    private String areaOfInterest;
+
+    @Column(name="WORK_IN_LOCATIONS")
+    private String workInLocations;
+
+    @Column(name="PRICE")
+    private int price;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy ="worker")
+    @JsonIgnore
+    private Set<CommentEntity> comment = new HashSet<>();
+
 
 
 
@@ -69,7 +86,7 @@ public class WorkerEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     public String getPassword() {
         return password;
     }
@@ -86,13 +103,6 @@ public class WorkerEntity {
         this.telNumber = telNumber;
     }
 
-    public DetailEntity getDetail() {
-        return detail;
-    }
-
-    public void setDetail(DetailEntity detail) {
-        this.detail = detail;
-    }
 
     public int getAge() {
         return age;
@@ -100,5 +110,53 @@ public class WorkerEntity {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAreaOfInterest() {
+        return areaOfInterest;
+    }
+
+    public void setAreaOfInterest(String areaOfInterest) {
+        this.areaOfInterest = areaOfInterest;
+    }
+
+    public String getWorkInLocations() {
+        return workInLocations;
+    }
+
+    public void setWorkInLocations(String workInLocations) {
+        this.workInLocations = workInLocations;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public Set<CommentEntity> getComment() {
+        return comment;
+    }
+
+    public void setComment(Set<CommentEntity> comment) {
+        this.comment = comment;
     }
 }

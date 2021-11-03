@@ -1,8 +1,11 @@
 package com.Work.controller;
 import com.Work.entity.WorkerEntity;
+import com.Work.model.dto.UserLogin;
 import com.Work.model.dto.WorkerDto;
 import com.Work.service.IWorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,6 +41,11 @@ public class WorkerController {
     @RequestMapping(value="/search/{search}",method=RequestMethod.GET)
     public List<WorkerEntity> search(@PathVariable String search){
         return workerService.search(search);
+    }
+
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    public WorkerEntity login(@RequestBody UserLogin userLogin){
+        return workerService.userLogin(userLogin);
     }
 
 

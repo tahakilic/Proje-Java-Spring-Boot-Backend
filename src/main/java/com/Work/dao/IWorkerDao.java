@@ -1,6 +1,8 @@
 package com.Work.dao;
 
 import com.Work.entity.WorkerEntity;
+import com.Work.model.dto.UserLogin;
+
 import java.util.List;
 
 public interface IWorkerDao {
@@ -9,4 +11,7 @@ public interface IWorkerDao {
     int deleteById(Long id);
     WorkerEntity getById(Long id);
     List<WorkerEntity> search(String search);
+    WorkerEntity userLogin(UserLogin userLogin);
+
+
 }

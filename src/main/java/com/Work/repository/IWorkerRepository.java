@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IWorkerRepository extends CrudRepository<WorkerEntity,Long>  {
 
-    List<WorkerEntity> findByFirstNameContainingOrLastNameContaining(String firstName,String lastName); //veri tabanında arama yapar
+    List<WorkerEntity> findByFirstNameContainingOrLastNameContainingOrWorkInLocationsContainingOrAreaOfInterestContaining(String firstName,String lastName,String workInLocation,String areaOfInterest); //veri tabanında arama yapar
 
+    WorkerEntity findByEmailAndPassword(String email, String password);
 }
