@@ -1,5 +1,6 @@
 package com.Work.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class CommentEntity {
 
     @Column(name = "WORK_NAME")
     private String workName;
+
 
     @Column(name = "DATE")
     private Date date;

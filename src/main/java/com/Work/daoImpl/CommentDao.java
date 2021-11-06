@@ -20,8 +20,9 @@ public class CommentDao implements ICommentDao {
     }
 
     @Override
-    public List<CommentEntity> userCommentList(Long userId) {
+    public List<CommentEntity> userCommentList(WorkerEntity workerEntity) {
+        return repository.findByWorker(workerEntity);
 
-        return repository.findByWorkerContaining(userId);
     }
+
 }

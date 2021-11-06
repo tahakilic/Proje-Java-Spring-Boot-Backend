@@ -39,6 +39,7 @@ public class CommentService implements ICommentService {
 
     @Override
     public List<CommentEntity> userCommentList(Long userId) {
-        return commentDao.userCommentList(userId) ;
+       WorkerEntity workerEntity=workerDao.getById(userId);
+        return commentDao.userCommentList(workerEntity) ;
     }
 }
